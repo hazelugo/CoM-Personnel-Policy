@@ -47,6 +47,25 @@
         color: var(--muted);
       }
 
+      .actions {
+        padding: 16px 20px 0;
+      }
+
+      .pdf-link {
+        display: inline-block;
+        padding: 10px 16px;
+        background: #1d4ed8;
+        color: #ffffff;
+        text-decoration: none;
+        border-radius: 8px;
+        font-size: 14px;
+        font-weight: 600;
+      }
+
+      .pdf-link:hover {
+        background: #1e40af;
+      }
+
       pre {
         margin: 0;
         padding: 20px;
@@ -61,6 +80,11 @@
     <div class="page">
       <div class="header">
         Displaying the contents of Index.txt as plain text
+      </div>
+      <div class="actions">
+        <a class="pdf-link" href="./pdf/Policy%20Manual.pdf" target="_blank" rel="noopener noreferrer">
+          Download Policy Manual PDF
+        </a>
       </div>
       <pre id="content">Loading...</pre>
     </div>
