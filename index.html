@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Index.txt</title>
+    <style>
+      :root {
+        color-scheme: light;
+        --bg: #f5f7fb;
+        --panel: #ffffff;
+        --text: #1a1d24;
+        --muted: #4b5563;
+        --border: #d8deea;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        min-height: 100vh;
+        background: var(--bg);
+        color: var(--text);
+        font-family:
+          "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace;
+        display: flex;
+        justify-content: center;
+        padding: 32px 16px;
+      }
+
+      .page {
+        width: min(1100px, 100%);
+        background: var(--panel);
+        border: 1px solid var(--border);
+        border-radius: 12px;
+        box-shadow: 0 10px 25px rgba(15, 23, 42, 0.06);
+        overflow: hidden;
+      }
+
+      .header {
+        padding: 16px 20px;
+        border-bottom: 1px solid var(--border);
+        background: #eef3ff;
+        font-size: 14px;
+        color: var(--muted);
+      }
+
+      pre {
+        margin: 0;
+        padding: 20px;
+        white-space: pre-wrap;
+        word-break: break-word;
+        line-height: 1.6;
+        font-size: 14px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="page">
+      <div class="header">
+        Displaying the contents of Index.txt as plain text
+      </div>
+      <pre id="content">Loading...</pre>
+    </div>
+
+    <script>
+      fetch("Index.txt")
+        .then((response) => {
+          if (!response.ok) {
+            throw new Error("Unable to load Index.txt");
+          }
+          return response.text();
+        })
+        .then((text) => {
+          document.getElementById("content").textContent = text;
+        })
+        .catch((error) => {
+          document.getElementById("content").textContent =
+            "Unable to load Index.txt. Please serve this folder over a local web server and try again.\n\n" +
+            error.message;
+        });
+    </script>
+  </body>
+</html>
